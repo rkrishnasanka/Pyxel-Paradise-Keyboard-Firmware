@@ -24,52 +24,52 @@ void setup() {
 SIGNAL(TIMER0_COMPA_vect)
 {
   accumulator++;
-  if(accumulator == 10){
+  if(accumulator == 100){
     accumulator = 0;
 
     //Loop through and check all the pins
-    if(digitalRead(2) == LOW){
+    if(digitalRead(2) == HIGH){
       //Up
       Keyboard.write('w');
-    } else if(digitalRead(3) == LOW){
+    } else if(digitalRead(3) == HIGH){
       //Left
       Keyboard.write('a');
-    } else if(digitalRead(4) == LOW){
+    } else if(digitalRead(4) == HIGH){
       //Down
       Keyboard.write('s');
-    } else if(digitalRead(5) == LOW){
+    } else if(digitalRead(5) == HIGH){
       //Right
       Keyboard.write('d');
-    } else if(digitalRead(6) == LOW){
+    } else if(digitalRead(6) == HIGH){
       //Screenshot
       Keyboard.press(KEY_LEFT_ALT);
       Keyboard.write('1');
       Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(7) == LOW){
+    } else if(digitalRead(7) == HIGH){
       //Reset the recording start time
       Keyboard.press(KEY_LEFT_ALT);
       Keyboard.write('2');
       Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(8) == LOW){
+    } else if(digitalRead(8) == HIGH){
       //Save the screencapture
       Keyboard.press(KEY_LEFT_ALT);
       Keyboard.write('3');
       Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(9) == LOW){
+    } else if(digitalRead(9) == HIGH){
       //Toogle the Performance Monitor
       Keyboard.press(KEY_LEFT_ALT);
       Keyboard.write('0');
       Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(10) == LOW){
+    } else if(digitalRead(10) == HIGH){
       //North
       Keyboard.write('u');
-    } else if(digitalRead(16) == LOW){
+    } else if(digitalRead(16) == HIGH){
       //East
       Keyboard.write('i');
-    } else if(digitalRead(14) == LOW){
+    } else if(digitalRead(14) == HIGH){
       //South
       Keyboard.write('o');
-    } else if(digitalRead(15) == LOW){
+    } else if(digitalRead(15) == HIGH){
       //West
       Keyboard.write('p');
     }
