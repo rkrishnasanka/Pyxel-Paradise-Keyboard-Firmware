@@ -4,6 +4,21 @@
 #define KEY_LEFT_CTRL  0x80
 #define KEY_LEFT_ALT   0x82
 
+int JOYSTICK_NORTH = 2;
+int JOYSTICK_EAST = 5;
+int JOYSTICK_SOUTH = 3;
+int JOYSTICK_WEST = 4;
+
+int ARCADE_BUTTON_UP = 6;
+int ARCADE_BUTTON_LEFT = 7;
+int ARCADE_BUTTON_RIGHT = 8;
+int ARCADE_BUTTON_DOWN = 9;
+
+int META_BUTTON_1 = 15;
+int META_BUTTON_2 = 14;
+int META_BUTTON_3 = 16;
+int META_BUTTON_4 = 10;
+
 int inputpins[12] = {2,3,4,5,6,7,8,9,10,16,14,15};
 unsigned int accumulator = 0;
 
@@ -24,62 +39,74 @@ void setup() {
 SIGNAL(TIMER0_COMPA_vect)
 {
   accumulator++;
-  if(accumulator == 100){
+  if(accumulator == 1){
     accumulator = 0;
 
-    //Loop through and check all the pins
-    if(digitalRead(2) == HIGH){
-      //Up
+    if(digitalRead(JOYSTICK_NORTH) == LOW){
+      //NORTH
       Keyboard.write('w');
-    } else if(digitalRead(3) == HIGH){
-      //Left
-      Keyboard.write('a');
-    } else if(digitalRead(4) == HIGH){
-      //Down
-      Keyboard.write('s');
-    } else if(digitalRead(5) == HIGH){
-      //Right
+    }
+    if(digitalRead(JOYSTICK_EAST) == LOW){
+      //EAST
       Keyboard.write('d');
-    } else if(digitalRead(6) == HIGH){
-      //Screenshot
-      Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('1');
-      Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(7) == HIGH){
-      //Reset the recording start time
-      Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('2');
-      Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(8) == HIGH){
-      //Save the screencapture
-      Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('3');
-      Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(9) == HIGH){
-      //Toogle the Performance Monitor
-      Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('0');
-      Keyboard.release(KEY_LEFT_ALT);
-    } else if(digitalRead(10) == HIGH){
-      //North
+    }
+    if(digitalRead(JOYSTICK_SOUTH) == LOW){
+      //SOUTH
+      Keyboard.write('s');
+    }
+    if(digitalRead(JOYSTICK_WEST) == LOW){
+      //WEST
+      Keyboard.write('a');
+    }
+
+    if(digitalRead(ARCADE_BUTTON_UP) == HIGH){
+      //ARCADE BUTTON UP
       Keyboard.write('u');
-    } else if(digitalRead(16) == HIGH){
-      //East
+    }
+    if(digitalRead(ARCADE_BUTTON_LEFT) == HIGH){
+      //ARCADE BUTTON LEFT
       Keyboard.write('i');
-    } else if(digitalRead(14) == HIGH){
-      //South
+    }
+    if(digitalRead(ARCADE_BUTTON_RIGHT) == HIGH){
+      //ARCADE BUTTON RIGHT
       Keyboard.write('o');
-    } else if(digitalRead(15) == HIGH){
-      //West
+    }
+    if(digitalRead(ARCADE_BUTTON_DOWN) == HIGH){
+      //ARCADE BUTTON DOWN
       Keyboard.write('p');
     }
-  }
+    
 
+    if(digitalRead(META_BUTTON_1) == HIGH){
+      //ARCADE BUTTON UP  
+      Keyboard.press(KEY_LEFT_ALT);
+      Keyboard.write('u');
+      Keyboard.release(KEY_LEFT_ALT);
+
+    }
+    if(digitalRead(META_BUTTON_2) == HIGH){
+      //ARCADE BUTTON LEFT
+      Keyboard.press(KEY_LEFT_ALT);
+      Keyboard.write('i');
+      Keyboard.release(KEY_LEFT_ALT);
+
+    }
+    if(digitalRead(META_BUTTON_3) == HIGH){
+      //ARCADE BUTTON RIGHT
+      Keyboard.press(KEY_LEFT_ALT);
+      Keyboard.write('o');
+      Keyboard.release(KEY_LEFT_ALT);
+
+    }
+    if(digitalRead(META_BUTTON_4) == HIGH){
+      //ARCADE BUTTON DOWN
+      Keyboard.press(KEY_LEFT_ALT);
+      Keyboard.write('p');
+      Keyboard.release(KEY_LEFT_ALT);
+
+    }
+  }
 }
 
 void loop() {
-  // // put your main code here, to run repeatedly:
-  // if (digitalRead(buttonPin) == 0){
-  //
-  // }
 }
