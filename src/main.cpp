@@ -44,66 +44,60 @@ SIGNAL(TIMER0_COMPA_vect)
 
     if(digitalRead(JOYSTICK_NORTH) == LOW){
       //NORTH
-      Keyboard.write('w');
+      Keyboard.write(KEY_UP_ARROW);
     }
     if(digitalRead(JOYSTICK_EAST) == LOW){
       //EAST
-      Keyboard.write('d');
+      Keyboard.write(KEY_RIGHT_ARROW);
     }
     if(digitalRead(JOYSTICK_SOUTH) == LOW){
       //SOUTH
-      Keyboard.write('s');
+      Keyboard.write(KEY_DOWN_ARROW);
     }
     if(digitalRead(JOYSTICK_WEST) == LOW){
       //WEST
-      Keyboard.write('a');
+      Keyboard.write(KEY_LEFT_ARROW);
     }
 
     if(digitalRead(ARCADE_BUTTON_UP) == HIGH){
       //ARCADE BUTTON UP
-      Keyboard.write('u');
+      Keyboard.write('w');
     }
     if(digitalRead(ARCADE_BUTTON_LEFT) == HIGH){
       //ARCADE BUTTON LEFT
-      Keyboard.write('i');
+      Keyboard.write('a');
     }
     if(digitalRead(ARCADE_BUTTON_RIGHT) == HIGH){
       //ARCADE BUTTON RIGHT
-      Keyboard.write('o');
+      Keyboard.write('d');
     }
     if(digitalRead(ARCADE_BUTTON_DOWN) == HIGH){
       //ARCADE BUTTON DOWN
-      Keyboard.write('p');
+      Keyboard.write('s');
     }
     
 
     if(digitalRead(META_BUTTON_1) == HIGH){
       //ARCADE BUTTON UP  
-      Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('u');
-      Keyboard.release(KEY_LEFT_ALT);
-
+      Keyboard.write(KEY_ESC);
     }
     if(digitalRead(META_BUTTON_2) == HIGH){
       //ARCADE BUTTON LEFT
       Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('i');
+      Keyboard.write('1');
       Keyboard.release(KEY_LEFT_ALT);
 
     }
     if(digitalRead(META_BUTTON_3) == HIGH){
       //ARCADE BUTTON RIGHT
       Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('o');
+      Keyboard.write('3');
       Keyboard.release(KEY_LEFT_ALT);
 
     }
     if(digitalRead(META_BUTTON_4) == HIGH){
       //ARCADE BUTTON DOWN
-      Keyboard.press(KEY_LEFT_ALT);
-      Keyboard.write('p');
-      Keyboard.release(KEY_LEFT_ALT);
-
+      Keyboard.write(KEY_RETURN);
     }
   }
 }
